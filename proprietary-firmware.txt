@@ -1,0 +1,16 @@
+#Firmware images
+adspso.bin
+BTFM.bin
+cmnlib64.mbn
+cmnlib.mbn
+ddr.mbn
+devcfg.mbng
+devinfo.bin
+emmc_appsboot.mbn
+hyp.mbn
+keymaster.mbn
+NON-HLOS.bin
+pmic.elf
+rpm.mbn
+tz.mbn
+xbl.elf
