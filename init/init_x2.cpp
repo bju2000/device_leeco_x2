@@ -28,10 +28,11 @@
  */
 
 #include <stdlib.h>
+#include <unistd.h>
 #include <fcntl.h>
 
 #include "vendor_init.h"
-#include "property_service.h"
+#include <cutils/properties.h>
 #include "log.h"
 #include "util.h"
 
@@ -94,7 +95,7 @@ void vendor_load_properties()
     char rf_version[PROP_VALUE_MAX];
     int rc;
 
-    rc = property_get("ro.broken.device", device);
+    rc = property_get("ro.broken.device", device, NULL);
     if (!rc || strncmp(device, "x2", PROP_VALUE_MAX))
         return;
         
