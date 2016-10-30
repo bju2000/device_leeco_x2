@@ -55,6 +55,4 @@ $(shell mkdir -p $(TARGET_OUT)/lib/modules; \
 
 include device/leeco/x2/tftp.mk
 
-include device/leeco/x2/kernel/AndroidKernel.mk
-
 endif
