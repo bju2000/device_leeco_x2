@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.cyanogenmod.settings.doze"
+    package="com.broken.settings.doze"
     android:versionCode="1"
     android:versionName="1.0"
     android:sharedUserId="android.uid.system">
@@ -13,18 +13,18 @@
         android:targetSdkVersion="21"/>
 
     <application
-        android:label="LetvDoze"
+        android:label="LeEcoDoze"
         android:persistent="true">
 
-        <receiver android:name="com.cyanogenmod.settings.doze.BootCompletedReceiver">
+        <receiver android:name="com.broken.settings.doze.BootCompletedReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </receiver>
 
-        <service android:name="com.cyanogenmod.settings.doze.DozeService"
-                 android:permission="LetvDozeService">
+        <service android:name="com.broken.settings.doze.DozeService"
+                 android:permission="LeEcoDozeService">
         </service>
 
         <activity
