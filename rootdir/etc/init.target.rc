@@ -170,14 +170,14 @@ service qvop-daemon /system/bin/qvop-daemon
     group system drmrpc
 
 #Start up peripheral manager
-service per_mgr system/bin/pm-service
-    class core
+service per_mgr /system/bin/pm-service
+    class late_start
     user system
     group system net_raw
     ioprio rt 4
 
 service per_proxy /system/bin/pm-proxy
-    class core
+    class late_start
     user system
     group system
     disabled
@@ -188,15 +188,6 @@ on property:init.svc.per_mgr=running
 on property:sys.shutdown.requested=*
     stop per_proxy
 
-service mdm_launcher /system/bin/sh init.mdm.sh
-     class core
-     oneshot
-
-service mdm_helper /system/bin/mdm_helper
-     class core
-     group root system
-     disabled
-
 service qseecomd /system/bin/qseecomd
    class core
    user root
@@ -205,6 +196,7 @@ service qseecomd /system/bin/qseecomd
 service perfd /system/vendor/bin/perfd
    class main
    user root
+   socket perfd seqpacket 0666 root system
    disabled
    writepid /dev/cpuset/system-background/tasks
 
@@ -213,15 +205,6 @@ service secotad /system/bin/secotad
    user system
    group system
 
-#service mpdecision /system/bin/mpdecision --avg_comp
-#   user root
-#   disabled
-#
-#service qosmgrd /system/bin/qosmgr /system/etc/qosmgr_rules.xml
-#   user system
-#   group system
-#   disabled
-#
 service thermal-engine /system/vendor/bin/thermal-engine
    class main
    user root
@@ -229,18 +212,7 @@ service thermal-engine /system/vendor/bin/thermal-engine
    socket thermal-recv-client stream 0660 system system
    socket thermal-recv-passive-client stream 0666 system system
    group root
-   socket thermal-send-client stream 0666 system system
-   socket thermal-recv-client stream 0660 system system
-   socket thermal-recv-passive-client stream 0666 system system
 
-#service security-check1 /sbin/security_boot_check system
-#    class core
-#    oneshot
-#
-#service security-check2 /sbin/security_boot_check recovery
-#    class core
-#    oneshot
-#
 service time_daemon /system/bin/time_daemon
    class late_start
    user root
