@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-$(call inherit-product-if-exists, vendor/leeco/x2/le_x2-vendor.mk)
+$(call inherit-product-if-exists, vendor/leeco/x2/x2-vendor.mk)
 
 $(call inherit-product-if-exists, vendor/leeco/x2/vendor/copyfiles.mk)
 
@@ -132,7 +132,7 @@ PRODUCT_COPY_FILES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    Snap \
+    SnapdragonCamera \
     libxml2
 
 # Yep
@@ -170,10 +170,6 @@ PRODUCT_PACKAGES += \
 # For android_filesystem_config.h
 PRODUCT_PACKAGES += \
     fs_config_files
-
-# Gello
-PRODUCT_PACKAGES += \
-    Gello
 
 # GPS
 PRODUCT_PACKAGES += \
@@ -333,7 +329,7 @@ PRODUCT_COPY_FILES += \
 # misc
 PRODUCT_PROPERTY_OVERRIDES += \
     sys.hallsensor.enable=1
-    
+
 # Reduce client buffer size for fast audio output tracks
 PRODUCT_PROPERTY_OVERRIDES += \
     af.fast_track_multiplier=2
